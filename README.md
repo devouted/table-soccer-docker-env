@@ -7,6 +7,7 @@ on unix:
 ```
 cd /a/dir/for/project
 git clone https://github.com/devouted/table-soccer-docker-env.git
+cd ./table-soccer-docker-env
 sudo docker-compose up
 ```
 
