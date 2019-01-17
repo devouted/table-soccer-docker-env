@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+
+    mysql:
+        image: 'mysql:5.6'
+        volumes:
+            - './config/mysql:/docker-entrypoint-initdb.d'
+        restart: always
+        ports:
+            - '3308:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_DATABASE: geneweaver
+            MYSQL_USER: geneweaver
+            MYSQL_PASSWORD: secret
+    loadbalancer:
+        image: nginx
+        volumes:
+            - './config/loadbalancer.conf:/etc/nginx/conf.d/loadbalancer.conf'
+        ports:
+            - '7070:80'
+        depends_on:
+            - mysql
+            - www
+            - pma
+    www:
+        build:
+            context: .
+            dockerfile: config/www-docker
+        volumes:
+            - ./www-root:/var/www/httpd
+            - ./config/apache.conf.d:/etc/apache2/sites-enabled
+        ports:
+            - '9010:80'
+    pma:
+        image: 'phpmyadmin/phpmyadmin'
+        ports:
+            - '9030:80'
+        environment:
+            PMA_HOST: mysql
+            PMA_USER: root
+            PMA_PASSWORD: secret
+        depends_on:
+            - mysql
+volumes:
+    db_data: null
+
