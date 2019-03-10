@@ -1,10 +1,17 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+ * Class UserController
+ * @package App\Controller
+ *
+ * @IsGranted("ROLE_USER")
+ */
 class UserController extends AbstractController
 {
     /**

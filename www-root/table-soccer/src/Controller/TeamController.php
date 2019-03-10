@@ -4,7 +4,14 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+ * Class TeamController
+ * @package App\Controller
+ *
+ * @IsGranted("ROLE_USER")
+ */
 class TeamController extends AbstractController
 {
     /**
