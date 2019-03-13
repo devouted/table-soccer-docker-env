@@ -20,7 +20,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class RegistrationController extends AbstractController
 {
     /**
-     * @Route("", name="registration_register")
+     * @Route("", name="app_register")
      *
      * @param Request $request
      * @param UserManager $userManager
@@ -48,7 +48,7 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @Route("/confirm/{confirmationToken}", name="registration_confirm")
+     * @Route("/confirm/{confirmationToken}", name="app_register_confirm")
      *
      * @param UserManager $userManager
      * @param User $user
