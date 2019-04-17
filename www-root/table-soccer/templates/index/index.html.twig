@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% block topMenu %}
+        {% include 'index/top_menu.html.twig' %}
+    {% endblock topMenu %}
+    <div class="container">
+        <hr>
+        <div class="card bg-light">
+            <div class="card-body mx-auto" style="min-width: 400px;">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </div>
+{% endblock body %}

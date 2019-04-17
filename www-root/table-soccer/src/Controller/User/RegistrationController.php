@@ -61,6 +61,6 @@ class RegistrationController extends AbstractController
             $userManager->confirm($user);
         }
 
-        return $this->redirectToRoute('app_login');
+        return $this->render('registration/confirm.html.twig');
     }
 }
