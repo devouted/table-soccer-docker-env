@@ -15,8 +15,14 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class TeamController extends AbstractController
 {
+    //TODO: Pagination for index table and maybe sorting
+
     /**
      * @Route("/", name="team_index", methods={"GET"})
+     *
+     * @param TeamRepository $teamRepository
+     *
+     * @return Response
      */
     public function index(TeamRepository $teamRepository): Response
     {
@@ -27,6 +33,10 @@ class TeamController extends AbstractController
 
     /**
      * @Route("/new", name="team_new", methods={"GET","POST"})
+     *
+     * @param Request $request
+     *
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,6 +60,10 @@ class TeamController extends AbstractController
 
     /**
      * @Route("/{id}", name="team_show", methods={"GET"})
+     *
+     * @param Team $team
+     *
+     * @return Response
      */
     public function show(Team $team): Response
     {
@@ -60,6 +74,11 @@ class TeamController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="team_edit", methods={"GET","POST"})
+     *
+     * @param Request $request
+     * @param Team $team
+     *
+     * @return Response
      */
     public function edit(Request $request, Team $team): Response
     {
@@ -82,6 +101,11 @@ class TeamController extends AbstractController
 
     /**
      * @Route("/{id}", name="team_delete", methods={"DELETE"})
+     *
+     * @param Request $request
+     * @param Team $team
+     *
+     * @return Response
      */
     public function delete(Request $request, Team $team): Response
     {

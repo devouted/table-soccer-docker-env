@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'index/index.html.twig' %}
 
-{% block title %}New Team{% endblock %}
+{% block title %}{{ 'team.new.title' | trans }}{% endblock %}
 
-{% block body %}
-    <h1>Create new Team</h1>
-
+{% block content %}
+    <h4 class="card-title mt-3 text-center">{{ 'team.new.title' | trans }}</h4>
+    <hr>
     {{ include('team/_form.html.twig') }}
 
-    <a href="{{ path('team_index') }}">back to list</a>
+    <a class="btn btn-dark" href="{{ path('team_index') }}">{{ 'app.back_to_list' | trans }}</a>
 {% endblock %}

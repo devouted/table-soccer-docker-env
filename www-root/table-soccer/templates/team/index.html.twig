@@ -1,17 +1,17 @@
 {% extends 'index/index.html.twig' %}
 
-{% block title %}Team index{% endblock %}
+{% block title %}{{ 'team.index.title' | trans }}{% endblock %}
 
+{% block additionalContentClasses %}{% endblock %}
 {% block content %}
-    <h1>Team index</h1>
-
+    <h4 class="card-title mt-3 text-center">{{ 'team.index.title' | trans }}</h4>
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>actions</th>
+                <th>{{ 'app.id' | trans }}</th>
+                <th>{{ 'team.name' | trans }}</th>
+                <th>{{ 'team.description' | trans }}</th>
+                <th>{{ 'app.actions' }}</th>
             </tr>
         </thead>
         <tbody>
@@ -21,17 +21,17 @@
                 <td>{{ team.name }}</td>
                 <td>{{ team.description }}</td>
                 <td>
-                    <a href="{{ path('team_show', {'id': team.id}) }}">show</a>
-                    <a href="{{ path('team_edit', {'id': team.id}) }}">edit</a>
+                    <a class="btn btn-dark" href="{{ path('team_show', {'id': team.id}) }}">{{ 'app.show' | trans }}</a>
+                    <a class="btn btn-dark" href="{{ path('team_edit', {'id': team.id}) }}">{{ 'app.edit' | trans }}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">{{ 'app.no_records_found' | trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('team_new') }}">Create new</a>
+    <a class="btn btn-success" href="{{ path('team_new') }}">{{ 'app.create' | trans }}</a>
 {% endblock %}

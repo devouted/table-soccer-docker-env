@@ -1,30 +1,29 @@
-{% extends 'base.html.twig' %}
+{% extends 'index/index.html.twig' %}
 
-{% block title %}Team{% endblock %}
+{% block title %}{{ 'team.title' | trans }}{% endblock %}
 
-{% block body %}
-    <h1>Team</h1>
-
+{% block content %}
+    <h4 class="card-title mt-3 text-center">{{ 'team.title' | trans }}</h4>
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{ 'app.id' | trans }}</th>
                 <td>{{ team.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>{{ 'team.name' | trans }}</th>
                 <td>{{ team.name }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>{{ 'team.description' | trans }}</th>
                 <td>{{ team.description }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('team_index') }}">back to list</a>
+    <a class="btn btn-dark" href="{{ path('team_index') }}">{{ 'app.back_to_list' | trans }}</a>
 
-    <a href="{{ path('team_edit', {'id': team.id}) }}">edit</a>
+    <a class="btn btn-dark" href="{{ path('team_edit', {'id': team.id}) }}">{{ 'app.edit' | trans }}</a>
 
     {{ include('team/_delete_form.html.twig') }}
 {% endblock %}

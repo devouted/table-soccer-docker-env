@@ -1,13 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'index/index.html.twig' %}
 
-{% block title %}Edit Team{% endblock %}
+{% block title %}{{ 'team.edit.title' | trans }}{% endblock %}
 
-{% block body %}
-    <h1>Edit Team</h1>
-
+{% block content %}
+    <h4 class="card-title mt-3 text-center">{{ 'team.edit.title' | trans }}</h4>
+    <hr>
     {{ include('team/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('team_index') }}">back to list</a>
-
+    <hr>
+    <div class="float-left">
+        <a class="btn btn-dark" href="{{ path('team_index') }}">back to list</a>
+    </div>
     {{ include('team/_delete_form.html.twig') }}
 {% endblock %}

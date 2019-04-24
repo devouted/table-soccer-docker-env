@@ -4,3 +4,5 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         site_title: '%app.site_title%'
+    form_themes:
+        - 'bootstrap_4_layout.html.twig'
