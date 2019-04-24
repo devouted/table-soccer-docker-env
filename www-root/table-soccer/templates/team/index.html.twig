@@ -1,20 +1,37 @@
-{% extends 'base.html.twig' %}
+{% extends 'index/index.html.twig' %}
 
-{% block title %}Hello TeamController!{% endblock %}
+{% block title %}Team index{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block content %}
+    <h1>Team index</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for team in teams %}
+            <tr>
+                <td>{{ team.id }}</td>
+                <td>{{ team.name }}</td>
+                <td>{{ team.description }}</td>
+                <td>
+                    <a href="{{ path('team_show', {'id': team.id}) }}">show</a>
+                    <a href="{{ path('team_edit', {'id': team.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'table-soccer/www-root/table-soccer/src/Controller/TeamController.php'|file_link(0) }}">src/Controller/TeamController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'table-soccer/www-root/table-soccer/templates/team/index.html.twig'|file_link(0) }}">templates/team/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <a href="{{ path('team_new') }}">Create new</a>
 {% endblock %}
