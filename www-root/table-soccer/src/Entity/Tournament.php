@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,7 +29,7 @@ class Tournament
     private $description;
 
     /**
-     * @var Team[]
+     * @var Team[]|Collection
      *
      * @ORM\ManyToMany(targetEntity="Team", orphanRemoval=true)
      */
@@ -87,9 +88,9 @@ class Tournament
     }
 
     /**
-     * @return Team[]|ArrayCollection
+     * @return Team[]|Collection
      */
-    public function getTeam(): ArrayCollection
+    public function getTeams(): Collection
     {
         return $this->teams;
     }

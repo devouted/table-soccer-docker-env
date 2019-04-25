@@ -3,6 +3,6 @@
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ team.id) }}">
     <div class="float-right">
-        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-danger">{{ 'app.delete' | trans }}</button>
     </div>
 </form>

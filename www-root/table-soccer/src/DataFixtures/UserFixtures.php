@@ -30,7 +30,24 @@ class UserFixtures extends Fixture
             ));
             $manager->persist($user);
         }
-        
+
+        // Let's create one user with admin privileges
+        $manager->persist($this->loadAdmin());
+
         $manager->flush();
+    }
+
+    private function loadAdmin(): User
+    {
+        $admin = new User();
+        $admin->setEmail('admin@test-domain.com');
+        $admin->setConfirmed(true);
+        $admin->setPassword($this->passwordEncoder->encodePassword(
+            $admin,
+            'admin'
+        ));
+        $admin->addRole(User::ROLE_ADMIN);
+
+        return $admin;
     }
 }

@@ -1,0 +1,50 @@
+{% extends 'index/index.html.twig' %}
+
+{% block title %}{{ 'tournament.title' | trans }}{% endblock %}
+
+
+{% block content %}
+    <h4 class="card-title mt-3 text-center">{{ 'tournament.title' | trans }}</h4>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>{{ 'app.id' | trans }}</th>
+            <td>{{ tournament.id }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'tournament.name' | trans }}</th>
+            <td>{{ tournament.name }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'tournament.description' | trans }}</th>
+            <td>{{ tournament.description }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'tournament.start_date' | trans }}</th>
+            <td>{{ tournament.startDate ? tournament.startDate|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'tournament.teams' | trans }}</th>
+            <td>
+                <ol>
+                    {% for team in tournament.teams %}
+                        <li>
+                            {{ team.name }}
+                        </li>
+                    {% endfor %}
+                </ol>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="float-left">
+        <a class="btn btn-dark" href="{{ path('tournament_index') }}">{{ 'app.back_to_list' | trans }}</a>
+
+        <a class="btn btn-dark" href="{{ path('tournament_edit', {'id': tournament.id}) }}">{{ 'app.edit' | trans }}</a>
+    </div>
+
+
+    {{ include('tournament/_delete_form.html.twig') }}
+{% endblock %}
