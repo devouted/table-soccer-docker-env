@@ -47,9 +47,9 @@ class SecurityCest
         // First, let's try to submit a request for a password reset.
         $I->amOnRoute('app_reset_password');
         $I->fillField('Email', self::TEST_USER_CREDENTIALS['email']);
-        $I->click('Send reset email');
+        $I->click('app.send_reset_email');
         // TODO: Replace with actual translation
-        $I->see('security.resetPassword.sent');
+        $I->see('app.reset_email_sent');
 
         /** @var User $userWithPasswordResetRequest */
         $userWithPasswordResetRequest = $I->grabEntityFromRepository(User::class, [

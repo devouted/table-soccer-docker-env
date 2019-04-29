@@ -19,9 +19,8 @@ class RegistrationCest
     public function registerNewUser(FunctionalTester $I)
     {
         $I->fillField('Email', self::NEW_USER_CREDENTIALS['email']);
-        $I->fillField('Plain password', self::NEW_USER_CREDENTIALS['password']);
-        $I->click('Register');
-
+        $I->fillField('Password', self::NEW_USER_CREDENTIALS['password']);
+        $I->click('app.submit');
         /** @var User $userBeforeConfirmation */
         $userBeforeConfirmation = $I->grabEntityFromRepository(User::class, [
             'email' => self::NEW_USER_CREDENTIALS['email']

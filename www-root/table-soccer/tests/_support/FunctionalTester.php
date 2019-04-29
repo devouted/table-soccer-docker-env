@@ -20,7 +20,15 @@ class FunctionalTester extends \Codeception\Actor
 {
     use _generated\FunctionalTesterActions;
 
+    public const TEST_ADMIN_CREDENTIALS = [
+        'email' => 'admin@test-domain.com',
+        'password' => 'admin'
+    ];
+
    /**
     * Define custom actions here
     */
+   public function loginAsAdmin() {
+       $this->amHttpAuthenticated(self::TEST_ADMIN_CREDENTIALS['email'], self::TEST_ADMIN_CREDENTIALS['password']);
+   }
 }
