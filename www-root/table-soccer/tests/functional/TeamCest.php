@@ -2,16 +2,37 @@
 
 namespace App\Tests;
 
-use App\DataFixtures\TeamFixtures;
 use App\Entity\Team;
 use App\Entity\User;
+use App\Repository\TeamRepository;
 
 class TeamCest
 {
     public const TEAM_SAMPLE_DATA = [
         'name' => 'Test Team 666',
-        'description' => 'Description of Test Team'
+        'description' => 'Description of Test Team',
     ];
+
+    public function indexTeam(FunctionalTester $I)
+    {
+        $I->loginAsAdmin();
+        $I->am(User::ROLE_ADMIN);
+        $I->amOnRoute('team_index');
+        // Let's see if by default we are on a first page
+        $page = 1;
+        /** @var Team[] $teams */
+        $teams = $I->grabEntitiesFromRepository(Team::class);
+        $teamsCount = count($teams);
+        $I->canSee($teams[0]->getName());
+        $supposedNumberOfPages = (int)($teamsCount / TeamRepository::MAX_PER_PAGE) + ($teamsCount % TeamRepository::MAX_PER_PAGE === 0 ? 0 : 1);
+        while($page < $supposedNumberOfPages) {
+            $I->click('Next');
+            $I->canSeeInCurrentUrl((string)++$page);
+            $indexToCheck = ($page - 1) * TeamRepository::MAX_PER_PAGE;
+            $I->assertTrue(array_key_exists($indexToCheck, $teams));
+            $I->canSee($teams[$indexToCheck]->getName());
+        }
+    }
 
     public function newTeam(FunctionalTester $I)
     {

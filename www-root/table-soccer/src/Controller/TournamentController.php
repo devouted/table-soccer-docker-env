@@ -18,16 +18,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class TournamentController extends AbstractController
 {
     /**
-     * @Route("/", name="tournament_index", methods={"GET"})
+     * @Route("/{page}", name="tournament_index", methods={"GET"}, requirements={"page"="\d+"})
      *
      * @param TournamentRepository $tournamentRepository
+     * @param int $page
      *
      * @return Response
      */
-    public function index(TournamentRepository $tournamentRepository): Response
+    public function index(TournamentRepository $tournamentRepository, int $page = 1): Response
     {
         return $this->render('tournament/index.html.twig', [
-            'tournaments' => $tournamentRepository->findAll(),
+            'pagination' => $tournamentRepository->findWithPagination($page),
         ]);
     }
 
@@ -59,7 +60,7 @@ class TournamentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="tournament_show", methods={"GET"})
+     * @Route("/{id}/show", name="tournament_show", methods={"GET"})
      *
      * @param Tournament $tournament
      *

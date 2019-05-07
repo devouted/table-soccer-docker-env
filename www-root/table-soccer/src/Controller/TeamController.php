@@ -20,16 +20,17 @@ class TeamController extends AbstractController
     //TODO: Pagination for index table and maybe sorting
 
     /**
-     * @Route("/", name="team_index", methods={"GET"})
+     * @Route("/{page}", name="team_index", methods={"GET"}, requirements={"page"="\d+"})
      *
      * @param TeamRepository $teamRepository
+     * @param int $page
      *
      * @return Response
      */
-    public function index(TeamRepository $teamRepository): Response
+    public function index(TeamRepository $teamRepository, int $page = 1): Response
     {
         return $this->render('team/index.html.twig', [
-            'teams' => $teamRepository->findAll(),
+            'pagination' => $teamRepository->findWithPagination($page),
         ]);
     }
 
@@ -61,7 +62,7 @@ class TeamController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="team_show", methods={"GET"})
+     * @Route("/{id}/show", name="team_show", methods={"GET"})
      *
      * @param Team $team
      *

@@ -5,7 +5,7 @@
 {% block additionalContentClasses %}{% endblock %}
 
 {% block content %}
-    <h4 class="card-title mt-3 text-center">{{ 'team.index.title' | trans }}</h4>
+    <h4 class="card-title mt-3 text-center">{{ 'tournament.index.title' | trans }}</h4>
     <table class="table">
         <thead>
             <tr>
@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for tournament in tournaments %}
+        {% for tournament in pagination.currentPageResults %}
             <tr>
                 <td>{{ tournament.id }}</td>
                 <td>{{ tournament.name }}</td>
@@ -36,6 +36,7 @@
         {% endfor %}
         </tbody>
     </table>
+    {{ pagerfanta(pagination, 'twitter_bootstrap4') }}
 
     <a class="btn btn-success" href="{{ path('tournament_new') }}">{{ 'app.create' | trans }}</a>
 {% endblock %}
