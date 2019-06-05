@@ -1,9 +1,9 @@
 {% extends 'index/index.html.twig' %}
 
-{% block title %}{{ 'app.confirm_account.title' | trans }}{% endblock %}
+{% block title %}{{ 'app.confirm_account' | trans }}{% endblock %}
 
 {% block content %}
-    <h4 class="card-title mt-3 text-center">{{ 'app.confirm_account.title' | trans }}</h4>
+    <h4 class="card-title mt-3 text-center">{{ 'app.confirm_account' | trans }}</h4>
     <hr>
-    <p class="text-center">{{ 'app.confirm_account.sign_in' | trans }} <a href="{{ path('app_login') }}">{{ 'app.sign_in' }}</a></p>
+    <p class="text-center">{{ 'app.sign_in' | trans }} <a href="{{ path('app_login') }}">{{ 'app.sign_in' }}</a></p>
 {% endblock %}

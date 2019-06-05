@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -40,9 +41,7 @@ class Team
     private $description;
 
     /**
-     * @var User[]
-     *
-     * @ORM\ManyToMany(targetEntity="User", orphanRemoval=true)
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="teams")
      */
     private $users;
 
@@ -80,10 +79,15 @@ class Team
         return $this;
     }
 
+    public function __toString(): string
+    {
+        return $this->getName();
+    }
+
     /**
-     * @return User[]|ArrayCollection
+     * @return Collection|User[]
      */
-    public function getUser(): ArrayCollection
+    public function getUsers(): Collection
     {
         return $this->users;
     }
@@ -92,6 +96,7 @@ class Team
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
+            $user->addTeam($this);
         }
 
         return $this;
@@ -101,13 +106,9 @@ class Team
     {
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
+            $user->removeTeam($this);
         }
 
         return $this;
-    }
-
-    public function __toString(): string
-    {
-        return $this->getName();
     }
 }

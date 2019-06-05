@@ -1,0 +1,44 @@
+{% extends 'index/index.html.twig' %}
+
+{% block title %}{{ 'user.title' | trans }}{% endblock %}
+
+
+{% block content %}
+    <h4 class="card-title mt-3 text-center">{{ 'user.title' | trans }}</h4>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>{{ 'app.id' | trans }}</th>
+            <td>{{ user.id }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'user.email' | trans }}</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'user.confirmed' | trans }}</th>
+            <td>{{ (user.confirmed ? 'app.yes' : 'app.no') | trans }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'user.teams' | trans }}</th>
+            <td>
+                <ol>
+                    {% for team in user.teams %}
+                        <li>
+                            {{ team.name }}
+                        </li>
+                    {% endfor %}
+                </ol>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="float-left">
+        <a class="btn btn-dark" href="{{ path('user_index') }}">{{ 'app.back_to_list' | trans }}</a>
+    </div>
+
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}

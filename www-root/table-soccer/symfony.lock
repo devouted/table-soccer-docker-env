@@ -134,8 +134,14 @@
     "nikic/php-parser": {
         "version": "v4.1.1"
     },
+    "ocramius/package-versions": {
+        "version": "1.4.0"
+    },
     "ocramius/proxy-manager": {
         "version": "2.1.1"
+    },
+    "pagerfanta/pagerfanta": {
+        "version": "v2.1.2"
     },
     "phar-io/manifest": {
         "version": "1.0.3"
@@ -386,6 +392,9 @@
     "symfony/polyfill-intl-icu": {
         "version": "v1.10.0"
     },
+    "symfony/polyfill-intl-idn": {
+        "version": "v1.11.0"
+    },
     "symfony/polyfill-mbstring": {
         "version": "v1.10.0"
     },
@@ -523,6 +532,9 @@
     },
     "webmozart/assert": {
         "version": "1.4.0"
+    },
+    "white-october/pagerfanta-bundle": {
+        "version": "v1.2.4"
     },
     "zendframework/zend-code": {
         "version": "3.3.1"

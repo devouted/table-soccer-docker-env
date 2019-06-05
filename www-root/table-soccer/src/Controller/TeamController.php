@@ -17,8 +17,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
  */
 class TeamController extends AbstractController
 {
-    //TODO: Pagination for index table and maybe sorting
-
     /**
      * @Route("/{page}", name="team_index", methods={"GET"}, requirements={"page"="\d+"})
      *

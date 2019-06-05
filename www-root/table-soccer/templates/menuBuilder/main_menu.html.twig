@@ -9,7 +9,7 @@
         <ul class="navbar-nav ml-md-auto d-md-flex">
             {% for element in menuElements %}
                 <li class="nav-item">
-                    <a class="nav-link {% if element.active %}active{% endif %}" href="{{ element.route }}">{{ element.label }}
+                    <a class="nav-link {% if element.active %}active{% endif %}" href="{{ element.route }}">{{ element.label | trans }}
                     </a>
                 </li>
             {% endfor %}

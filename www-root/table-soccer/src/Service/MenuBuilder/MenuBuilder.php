@@ -8,7 +8,6 @@ use App\Service\MenuBuilder\MenuElement;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Twig\Environment;
 
 class MenuBuilder
@@ -42,12 +41,17 @@ class MenuBuilder
                 new MenuElement(
                     $currentRoute === 'team_index',
                     $this->router->generate('team_index'),
-                    'app.team_index'
+                    'team.index.title'
                 ),
                 new MenuElement(
                     $currentRoute === 'tournament_index',
                     $this->router->generate('tournament_index'),
-                    'app.tournament_index'
+                    'tournament.index.title'
+                ),
+                new MenuElement(
+                    $currentRoute === 'user_index',
+                    $this->router->generate('user_index'),
+                    'user.index.title'
                 ),
                 new MenuElement(
                     $currentRoute === 'app_logout',

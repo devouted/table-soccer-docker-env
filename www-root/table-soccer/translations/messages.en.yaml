@@ -1,0 +1,44 @@
+app:
+  yes: Yes
+  no: No
+  confirm_account: Confirm account
+  create_account: Create account
+  change_password: Change password
+  sign_in: Sign in
+  submit: Submit
+  forget_password: Forgot password? You can create a new one.
+  reset_password: Reset password
+  send_reset_email: Send resetting email
+  id: ID
+  back_to_list: Back to list
+  actions: Actions
+  show: Show
+  edit: Edit
+  no_records_found: No records found!
+  create: Create
+  delete: Delete
+  logout: Logout
+  login: Login
+  register: Register
+team:
+  edit.title: Edit team
+  index.title: Teams
+  name: Name
+  description: Description
+  new.title: New team
+  title: Team
+tournament:
+  edit.title: Edit tournament
+  index.title: Torunaments
+  name: Name
+  description: Description
+  start_date: Start date
+  new.title: New tournament
+  title: Tournament
+  teams: Teams
+user:
+  index.title: Users
+  email: Email
+  confirmed: Confirmed
+  title: User
+  teams: Teams
